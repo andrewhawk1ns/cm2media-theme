@@ -15,7 +15,6 @@
     "browsersync": "^0.0.1-security",
     "eslint": "^4.9.0",
     "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^4.0.0",
     "gulp-babel": "^7.0.0",
     "gulp-concat": "^2.6.1",
     "gulp-imagemin": "^3.4.0",
@@ -27,17 +26,22 @@
   },
   "config": {
     "assets": {
-      "frontImages": "./assets/frontend/images/*",
-      "frontScripts": "./assets/frontend/js/*",
-      "frontStyles": "./assets/frontend/js/*",
-      "adminScripts": "./assets/admin/js/*",
-      "adminStyles": "./assets/admin/sass/*"
+      "images": "./assets/images/*",
+      "frontendScripts": "./assets/frontend/js/*.js",
+      "frontendStyles": "./assets/frontend/sass/**/*.sass",
+      "adminScripts": "./assets/admin/js/*.js",
+      "adminStyles": "./assets/admin/sass/**/*.sass"
     },
     "public": {
       "dest": "public",
-      "frontScripts": "frontend.js",
-      "frontStyles": "frontend.css",
+      "destJS": "./public/js",
+      "destIMG": "./public/images",
+      "frontendScripts": "frontend.js",
+      "frontendScriptsMin": "frontend.min.js",
+      "frontendStyles": "frontend.css",
+      "frontendStylesMin": "frontend.min.css",
       "adminScripts": "admin.js",
+      "adminScriptsMin": "admin.min.js",
       "adminStyles": "admin.css"
     }
   },
