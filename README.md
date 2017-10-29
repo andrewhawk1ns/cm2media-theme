@@ -8,7 +8,7 @@
 
 ## How to run:
 
-### Regular development:
+### Development:
 1. yarn prep
 2. yarn dev
 
