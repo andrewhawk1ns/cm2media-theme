@@ -7,6 +7,7 @@ A starter Gulp.js, Bootstrap 4 theme for website development.
 1. Browsersync, SASS, ES6, minification, autoprefixing, source maps
 2. WordPress admin customization support
 3. WordPress starter templates / parts
+4. SASS vendor overrides
 
 ## Quickstarts:
 
@@ -31,7 +32,7 @@ Run "yarn all"
 
 ### Browsersync development:
 
-1. gulp init
+1. gulp prep:sync
 2. gulp watch:sync
 
 ### Admin and frontend Wordpress development:

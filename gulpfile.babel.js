@@ -206,7 +206,7 @@ gulp.task('prep', ['images', 'frontend:vendor:sass', 'frontend:vendor:js']);
 gulp.task('prep:admin', ['images', 'admin:vendor:sass', 'admin:vendor:js']);
 gulp.task('prep:all', ['frontend:vendor:sass', 'frontend:vendor:js', 'images', 'admin:vendor:sass', 'admin:vendor:js']);
 
-gulp.task('init', ['prep', 'frontend:sync:init']);
+gulp.task('prep:sync', ['prep', 'frontend:sync:init']);
 gulp.task('sync', ['frontend:sync:sass', 'frontend:sync:js']);
 
 gulp.task('default', ['prep', 'build']);  

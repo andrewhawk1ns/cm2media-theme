@@ -99,8 +99,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "gulp prep && gulp watch",
-    "sync": "gulp init && gulp watch:sync",
-    "all": "gulp prep && gulp watch:all"
+    "sync": "gulp prep:sync && gulp watch:sync",
+    "all": "gulp prep:all && gulp watch:all"
   },
   "repository": {
     "type": "git",
