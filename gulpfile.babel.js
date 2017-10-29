@@ -97,7 +97,7 @@ gulp.task('frontend:vendor:js', function() {
   });
 
 /**
- * Front End Live Reload
+ * Front End Sync
  */
 
   gulp.task('frontend:sync:sass', () => {
@@ -191,29 +191,37 @@ gulp.task('frontend:vendor:js', function() {
         .pipe(gulp.dest(config.public.destCSS))
   });
 
+/**
+ * Multifaceted tasks
+ */
 
-gulp.task('build:frontend', ['images', 'frontend:sass', 'frontend:js']);
+gulp.task('build', ['images', 'frontend:sass', 'frontend:js']);
 gulp.task('build:admin', ['admin:sass', 'admin:js']);
 
-gulp.task('sync:frontend', ['admin:sass', 'admin:js']);
+gulp.task('sync', ['frontend:sync:sass', 'frontend:sync:js']);
 
-gulp.task('prep:frontend', ['images', 'frontend:vendor:sass', 'frontend:vendor:js']);
+gulp.task('prep', ['images', 'frontend:vendor:sass', 'frontend:vendor:js']);
 gulp.task('prep:admin', ['images', 'admin:vendor:sass', 'admin:vendor:js']);
 
-gulp.task('default', ['prep:frontend', 'build:frontend']);  
+gulp.task('default', ['prep', 'build']);  
 
+/**
+ * Watch tasks
+ */
 
-gulp.task('watch', ['build:frontend'], () => {
+gulp.task('watch', ['build'], () => {
   gulp.watch([config.assets.frontend.styles], ['frontend:sass']);
   gulp.watch([config.assets.frontend.scripts], ['frontend:js']);
 });
 
-gulp.task('watch:sync', ['sync:frontend'], () => {
+gulp.task('watch:sync', ['sync'], () => {
     gulp.watch([config.assets.frontend.styles], ['frontend:sync:sass']);
     gulp.watch([config.assets.frontend.scripts], ['frontend:sync:js']);
 });
   
-gulp.task('watch:global', ['build:frontend', 'build:admin'], () => {
-    gulp.watch([config.assets.frontend.styles], ['frontend:sync:sass']);
-    gulp.watch([config.assets.frontend.scripts], ['frontend:sync:js']);
+gulp.task('watch:global', ['build', 'build:admin'], () => {
+    gulp.watch([config.assets.frontend.styles], ['frontend:sass']);
+    gulp.watch([config.assets.frontend.scripts], ['frontend:js']);
+    gulp.watch([config.assets.admin.styles], ['admin:sass']);
+    gulp.watch([config.assets.admin.scripts], ['admin:js']);
 });

@@ -62,7 +62,7 @@
       }
     },
     "browsersync": {
-      "projectURL": "localhost/project_name"
+      "projectURL": "localhost"
     },
     "public": {
       "dest": "public",
@@ -96,7 +96,11 @@
     }
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "gulp prep",
+    "dev": "gulp watch",
+    "sync": "gulp watch:sync",
+    "global": "gulp watch:global"
   },
   "repository": {
     "type": "git",
