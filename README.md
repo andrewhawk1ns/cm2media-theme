@@ -6,17 +6,33 @@
 2. WordPress admin customization support
 3. WordPress part files
 
-## How to run:
+## Quickstarts:
 
 ### Development:
-1. yarn prep
-2. yarn dev
+
+Run "yarn dev"
 
 ### Browsersync development:
-1. yarn prep
-2. yarn sync
+
+Run "yarn sync"
 
 ### Admin and frontend Wordpress development:
-1. yarn prep
-2. yarn global
 
+Run "yarn all"
+
+## Gulp commands:
+
+### Development:
+
+1. gulp prep
+2. gulp watch
+
+### Browsersync development:
+
+1. gulp init
+2. gulp watch:sync
+
+### Admin and frontend Wordpress development:
+
+1. gulp prep:all
+2. gulp watch:all

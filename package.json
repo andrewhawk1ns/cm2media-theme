@@ -26,6 +26,7 @@
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.6.1",
     "gulp-uglify": "^3.0.0",
+    "npm-run-all": "^4.1.1",
     "require-dir": "^0.3.2",
     "yarn": "^1.2.1"
   },
@@ -97,10 +98,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "gulp prep",
-    "dev": "gulp watch",
-    "sync": "gulp watch:sync",
-    "global": "gulp watch:global"
+    "dev": "gulp prep && gulp watch",
+    "sync": "gulp init && gulp watch:sync",
+    "all": "gulp prep && gulp watch:all"
   },
   "repository": {
     "type": "git",

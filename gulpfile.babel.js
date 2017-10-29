@@ -30,13 +30,6 @@ gulp.task( 'images', function() {
       .pipe(gulp.dest(config.public.destIMG))
   });
 
-gulp.task( 'browser-sync', function() {
-    browsersync.init( {
-      proxy: config.browsersync.projectURL,
-      open: true,
-      injectChanges: true,
-    } );
-  });
 
 
 /**
@@ -100,6 +93,14 @@ gulp.task('frontend:vendor:js', function() {
  * Front End Sync
  */
 
+  gulp.task('frontend:sync:init', function() {
+    browsersync.init( {
+      proxy: config.browsersync.projectURL,
+      open: true,
+      injectChanges: true,
+    } );
+  });
+
   gulp.task('frontend:sync:sass', () => {
     return gulp.src(config.assets.frontend.stylesMain)
         .pipe(sourcemaps.init({'loadMaps': true}))
@@ -133,6 +134,9 @@ gulp.task('frontend:vendor:js', function() {
     .pipe(gulp.dest(config.public.destJS))
     .pipe(browsersync.stream())
   });
+
+
+
 
 /**
  * Admin Tasks
@@ -198,15 +202,17 @@ gulp.task('frontend:vendor:js', function() {
 gulp.task('build', ['images', 'frontend:sass', 'frontend:js']);
 gulp.task('build:admin', ['admin:sass', 'admin:js']);
 
-gulp.task('sync', ['frontend:sync:sass', 'frontend:sync:js']);
-
 gulp.task('prep', ['images', 'frontend:vendor:sass', 'frontend:vendor:js']);
 gulp.task('prep:admin', ['images', 'admin:vendor:sass', 'admin:vendor:js']);
+gulp.task('prep:all', ['frontend:vendor:sass', 'frontend:vendor:js', 'images', 'admin:vendor:sass', 'admin:vendor:js']);
+
+gulp.task('init', ['prep', 'frontend:sync:init']);
+gulp.task('sync', ['frontend:sync:sass', 'frontend:sync:js']);
 
 gulp.task('default', ['prep', 'build']);  
 
 /**
- * Watch tasks
+ * Watch tasks (use "-" for sequential task compatibility)
  */
 
 gulp.task('watch', ['build'], () => {
@@ -219,7 +225,7 @@ gulp.task('watch:sync', ['sync'], () => {
     gulp.watch([config.assets.frontend.scripts], ['frontend:sync:js']);
 });
   
-gulp.task('watch:global', ['build', 'build:admin'], () => {
+gulp.task('watch:all', ['build', 'build:admin'], () => {
     gulp.watch([config.assets.frontend.styles], ['frontend:sass']);
     gulp.watch([config.assets.frontend.scripts], ['frontend:js']);
     gulp.watch([config.assets.admin.styles], ['admin:sass']);
