@@ -1,4 +1,4 @@
-# cm2media-theme
+# Starter theme
 
 ### A Gulp Bootstrap 4 boilerplate that supports:
 
