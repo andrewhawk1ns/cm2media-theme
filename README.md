@@ -16,7 +16,7 @@
 1. yarn prep
 2. yarn sync
 
-### Admin and frontend development:
+### Admin and frontend Wordpress development:
 1. yarn prep
 2. yarn global
 
