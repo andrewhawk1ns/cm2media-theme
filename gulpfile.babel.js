@@ -199,11 +199,11 @@ gulp.task('frontend:vendor:js', function() {
  * Multifaceted tasks
  */
 
-gulp.task('build', ['images', 'frontend:sass', 'frontend:js']);
+gulp.task('build', ['frontend:sass', 'frontend:js']);
 gulp.task('build:admin', ['admin:sass', 'admin:js']);
 
-gulp.task('prep', ['images', 'frontend:vendor:sass', 'frontend:vendor:js']);
-gulp.task('prep:admin', ['images', 'admin:vendor:sass', 'admin:vendor:js']);
+gulp.task('prep', ['frontend:vendor:sass', 'frontend:vendor:js']);
+gulp.task('prep:admin', ['admin:vendor:sass', 'admin:vendor:js']);
 gulp.task('prep:all', ['frontend:vendor:sass', 'frontend:vendor:js', 'images', 'admin:vendor:sass', 'admin:vendor:js']);
 
 gulp.task('prep:sync', ['prep', 'frontend:sync:init']);
@@ -212,20 +212,23 @@ gulp.task('sync', ['frontend:sync:sass', 'frontend:sync:js']);
 gulp.task('default', ['prep', 'build']);  
 
 /**
- * Watch tasks (use "-" for sequential task compatibility)
+ * Watch tasks
  */
 
-gulp.task('watch', ['build'], () => {
-  gulp.watch([config.assets.frontend.styles], ['frontend:sass']);
-  gulp.watch([config.assets.frontend.scripts], ['frontend:js']);
+gulp.task('watch', ['images', 'build'], () => {
+  gulp.watch("assets/images/**/*", {cwd:'./'}, ['images']);
+  gulp.watch(config.assets.frontend.styles, ['frontend:sass']);
+  gulp.watch(config.assets.frontend.scripts, ['frontend:js']);
 });
 
-gulp.task('watch:sync', ['sync'], () => {
+gulp.task('watch:sync', ['images', 'sync'], () => {
+    gulp.watch("assets/images/**/*", {cwd:'./'}, ['images']);
     gulp.watch([config.assets.frontend.styles], ['frontend:sync:sass']);
     gulp.watch([config.assets.frontend.scripts], ['frontend:sync:js']);
 });
   
-gulp.task('watch:all', ['build', 'build:admin'], () => {
+gulp.task('watch:all', ['images', 'build', 'build:admin'], () => {
+    gulp.watch("assets/images/**/*", {cwd:'./'}, ['images']);
     gulp.watch([config.assets.frontend.styles], ['frontend:sass']);
     gulp.watch([config.assets.frontend.scripts], ['frontend:js']);
     gulp.watch([config.assets.admin.styles], ['admin:sass']);

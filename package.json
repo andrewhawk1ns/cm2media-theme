@@ -32,7 +32,8 @@
   },
   "config": {
     "assets": {
-      "images": "./assets/images/*",
+      "images": "./assets/images/**/*",
+      "imagesrelative": "assets/images/**/*",
       "frontend": {
         "scripts": "./assets/frontend/js/*.js",
         "styles": "./assets/frontend/styles/**/*.scss",
