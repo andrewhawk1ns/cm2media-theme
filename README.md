@@ -1,6 +1,6 @@
 # Starter theme
 
-A starter Gulp.js, Bootstrap 4 theme for website development.
+A starter Gulp.js, Bootstrap 4 WordPress theme for website development.
  
  
 ## A Gulp Bootstrap 4 boilerplate that supports:
