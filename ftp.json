@@ -1,0 +1,24 @@
+{
+    "credentials": {
+        "host": "ftp.cm2media.co",
+        "user": "andrew@cm2media.co",
+        "password": "Snowman1"
+    },
+    "globs": [
+        ".",
+        "*",
+        "*/**",
+        "!gulpfile.js",
+        "!gulpfile.babel.js",
+        "!node_modules",
+        "!node_modules/**",
+        "!.gitignore",
+        "!.gitattributes",
+        "!*.json",
+        "!*.md",
+        ".babelrc",
+        "!yarn.lock",
+        "!LICENSE"
+    ],
+    "uploaddir": "/public_html/ftptest"
+}

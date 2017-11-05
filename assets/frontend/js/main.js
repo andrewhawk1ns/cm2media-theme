@@ -9,7 +9,7 @@ class App
     }
     initialize()
     {
-
+        console.log('test2');
     }
     actions()
     {

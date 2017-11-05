@@ -12,14 +12,33 @@ import merge from 'gulp-merge';
 import concat from 'gulp-concat';
 import minify from 'gulp-clean-css';
 import autoprefixer from 'gulp-autoprefixer';
+import ftp from 'vinyl-ftp';
+import gutil from 'gulp-util';
 
-const config = require("./package.json").config;
+const config = require("./package.json").config,
+ftpCreds = require("./ftp.json").credentials,
+ftpGlobs = require("./ftp.json").globs,
+dir = require("./ftp.json").uploaddir;
 
 /**
  * Global Tasks
  */
+let conn = ftp.create( {
+    host:     ftpCreds.host,
+    user:     ftpCreds.user,
+    password: ftpCreds.password,
+    parallel: 10,
+    log:      gutil.log
+  });
 
-gulp.task( 'images', function() {
+gulp.task( 'deploy', ['images', 'frontend:js', 'frontend:sass'], () => {
+
+      return gulp.src(ftpGlobs, { base: '.', buffer: false})
+      .pipe( conn.newer( dir ) ) // only upload newer files
+      .pipe( conn.dest( dir ) );
+  });
+
+  gulp.task( 'images', () => {
     gulp.src( config.assets.images )
       .pipe( imagemin( {
             progressive: true,
@@ -29,6 +48,30 @@ gulp.task( 'images', function() {
           } ) )
       .pipe(gulp.dest(config.public.destIMG))
   });
+
+/** FTP Tasks
+ * 
+ */
+
+gulp.task( 'frontend:ftp:css', ['frontend:sass'], () => {
+    return gulp.src( config.public.destCSS )
+        .pipe( conn.newer( dir ) ) 
+        .pipe( conn.dest( dir ) );
+} );
+
+gulp.task( 'frontend:ftp:js', ['frontend:js'], () => {
+    return gulp.src( config.public.destJS )
+        .pipe( conn.newer( dir ) ) 
+        .pipe( conn.dest( dir ) );
+} );
+
+gulp.task( 'frontend:ftp:images', ['images'], () => {
+    return gulp.src( config.public.destIMG )
+        .pipe( conn.newer( dir ) ) 
+        .pipe( conn.dest( dir ) );
+} );
+
+
 
 
 
@@ -50,7 +93,7 @@ gulp.task('frontend:js', () => {
         .pipe(gulp.dest(config.public.destJS))
   });
 
-gulp.task('frontend:vendor:js', function() {
+gulp.task('frontend:vendor:js', () => {
     return gulp
       .src(config.assets.frontend.vendor.scripts)
       .pipe(sourcemaps.init({'loadMaps': true}))
@@ -225,6 +268,10 @@ gulp.task('watch:sync', ['images', 'sync'], () => {
     gulp.watch("assets/images/**/*", {cwd:'./'}, ['images']);
     gulp.watch([config.assets.frontend.styles], ['frontend:sync:sass']);
     gulp.watch([config.assets.frontend.scripts], ['frontend:sync:js']);
+});
+
+gulp.task('watch:ftp', ['deploy'], () => {
+gulp.watch(["./*", config.assets.frontend.styles, config.assets.frontend.scripts], ['deploy']);
 });
   
 gulp.task('watch:all', ['images', 'build', 'build:admin'], () => {

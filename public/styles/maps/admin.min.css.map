@@ -1,1 +1,1 @@
-{"version":3,"sources":["components/_metabox.scss"],"names":[],"mappings":"AAAA,YAIQ,YAAA","file":"../admin.min.css","sourcesContent":[".postbox\r\n{\r\n    h2\r\n    {\r\n        font-weight:bold;\r\n    }\r\n}"]}
+{"version":3,"sources":["components/_metabox.scss"],"names":[],"mappings":"AAAA,YAIQ,YAAA","file":"../admin.min.css","sourcesContent":[".postbox\r\n{\r\n    h2\r\n    {\r\n        font-weight:600;\r\n    }\r\n}"]}
