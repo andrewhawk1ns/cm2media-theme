@@ -45,5 +45,6 @@ Run "yarn all"
 
 ### Automatic FTP:
 
-1. gulp prep
-2. gulp watch:ftp
+1. Enter your FTP credentials in ftp.json
+2. gulp prep
+3. gulp watch:ftp
