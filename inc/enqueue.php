@@ -5,22 +5,47 @@
  * @package cm2theme
  */
 
-if ( ! function_exists( 'cm2theme_scripts' ) ) {
-	/**
-	 * Load theme's JavaScript sources.
-	 */
-	function cm2theme_scripts() {
-		// Get the theme data.
-		$the_theme = wp_get_theme();
-		wp_enqueue_style( 'cm2theme-styles', get_stylesheet_directory_uri() . '/css/theme.min.css', array(), $the_theme->get( 'Version' ), false );
-		wp_register_script('jquery-slim', (get_template_directory_uri() . '/js/jquery.slim.min.js'), true, '3.2.1');
-		wp_enqueue_script( 'jquery-slim' );
-		wp_enqueue_script( 'popper-scripts', get_template_directory_uri() . '/js/popper.min.js', array(), true);
-		wp_enqueue_script( 'cm2theme-scripts', get_template_directory_uri() . '/js/theme.min.js', array(), $the_theme->get( 'Version' ), true );
-		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-			wp_enqueue_script( 'comment-reply' );
-		}
+if ( ! function_exists( 'cm2theme_scripts_frontend' ) ) {
+
+	function cm2theme_scripts_frontend() {
+
+		//Minified Front End Vendor Scripts / Styles
+
+		wp_deregister_script('jquery'); // Remove WordPress version of jQuery.
+
+		wp_enqueue_style('cm2theme-frontend-vendor-styles', get_stylesheet_directory_uri() . '/public/styles/vendor.min.css');
+		wp_enqueue_script('cm2theme-frontend-vendor-scripts', get_template_directory_uri() . '/public/scripts/vendor.min.js', array(), true, true);
+
+		//Minified Front End Custom Scripts / Styles
+
+		wp_enqueue_style('cm2theme-frontend-custom-styles', get_stylesheet_directory_uri() . '/public/styles/frontend.min.css');
+		wp_enqueue_script('cm2theme-frontend-custom-scripts', get_template_directory_uri() . '/public/scripts/frontend.min.js', array(), true, true);
+
 	}
 } 
 
-add_action( 'wp_enqueue_scripts', 'cm2theme_scripts' );
+add_action( 'wp_enqueue_scripts', 'cm2theme_scripts_frontend' );
+
+
+if ( ! function_exists( 'cm2theme_scripts_admin' ) ) {
+
+	function cm2theme_scripts_admin() {
+
+		wp_deregister_script('jquery'); // Remove WordPress version of jQuery.
+
+		//Minified Admin Vendor Scripts / Styles 
+
+		wp_enqueue_style('cm2theme-admin-vendor-styles', get_stylesheet_directory_uri() . '/public/styles/admin-vendor.min.css');
+		wp_enqueue_script('cm2theme-admin-vendor-scripts', get_template_directory_uri() . '/public/scripts/admin-vendor.min.js', array(), true, true);
+
+		//Minified Admin Custom Scripts / Styles
+
+		wp_enqueue_style('cm2theme-admin-custom-styles', get_stylesheet_directory_uri() . '/public/styles/admin.min.css');
+		wp_enqueue_script('cm2theme-admin-custom-scripts', get_template_directory_uri() . '/public/scripts/admin.min.js', array(), true, true);
+
+	}
+} 
+
+//add_action( 'admin_enqueue_scripts', 'cm2theme_scripts_admin' );
+
+

@@ -1,8 +1,8 @@
 {
     "credentials": {
-        "host": "ftp.cm2media.co",
-        "user": "",
-        "password": ""
+        "host": "ftp.server.com",
+        "user": "name@server.com",
+        "password": "password"
     },
     "globs": [
         ".",

@@ -4,29 +4,26 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var $ = jquery;
+var $ = jQuery; //Declare JQuery
 
-var App = function () {
-    function App() {
-        _classCallCheck(this, App);
+var CM2Theme = function () {
+    function CM2Theme() {
+        _classCallCheck(this, CM2Theme);
+
+        this.initialize(), this.actions();
     }
 
-    _createClass(App, [{
-        key: 'construct',
-        value: function construct() {
-            this.initialize(), this.actions();
-        }
-    }, {
+    _createClass(CM2Theme, [{
         key: 'initialize',
         value: function initialize() {
-            console.log('test2');
+            console.log('test');
         }
     }, {
         key: 'actions',
         value: function actions() {}
     }]);
 
-    return App;
+    return CM2Theme;
 }();
 
-new App();
+new CM2Theme();

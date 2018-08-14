@@ -49,10 +49,6 @@ require get_template_directory() . '/inc/custom-comments.php';
  */
 require get_template_directory() . '/inc/bs4navwalker.php';
 /**
- * Load WooCommerce functions.
- */
-require get_template_directory() . '/inc/woocommerce.php';
-/**
  * Load editor functions.
  */
 require get_template_directory() . '/inc/editor.php';
@@ -63,5 +59,9 @@ require get_template_directory() . '/inc/editor.php';
 /**
  * Custom post types.
  */
-//require get_template_directory() . '/inc/google-analytics.php';
+//require get_template_directory() . '/inc/custom-post-types.php';
+/**
+ * Custom post taxonomies.
+ */
+//require get_template_directory() . '/inc/custom-taxonomies.php';
 ?>

@@ -20,7 +20,7 @@ $sidebar_pos = get_theme_mod( 'cm2theme_sidebar_position' );
 		<div class="row">
 
 			<!-- Do the left sidebar check -->
-			<?php get_template_part( 'global/left-sidebar-check', 'none' ); ?>
+			<?php get_template_part( 'global/left-sidebar-check' ); ?>
 
 			<main class="site-main" id="main">
 
@@ -72,7 +72,7 @@ $sidebar_pos = get_theme_mod( 'cm2theme_sidebar_position' );
 
 					<?php else : ?>
 
-						<?php get_template_part( 'loop-templates/content', 'none' ); ?>
+						<?php get_template_part( 'global/content', 'none' ); ?>
 
 					<?php endif; ?>
 
@@ -88,7 +88,11 @@ $sidebar_pos = get_theme_mod( 'cm2theme_sidebar_position' );
 		</div><!-- #primary -->
 
 		<!-- Do the right sidebar check -->
-		<?php get_template_part( 'global/right-sidebar-check' ); ?>
+		<?php if ( 'right' === $sidebar_pos || 'both' === $sidebar_pos ) : ?>
+
+			<?php get_sidebar( 'right' ); ?>
+
+		<?php endif; ?>
 
 	</div> <!-- .row -->
 

@@ -1,21 +1,15 @@
-const $ = jquery
+const $ = jQuery; //Declare JQuery
 
-class App
+class CM2Theme
 {
-    construct()
+    constructor()
     {
         this.initialize(),
-        this.actions()
+        this.actions();
     }
-    initialize()
-    {
-        console.log('test2');
-    }
-    actions()
-    {
-
-    }
+    initialize() { console.log('test'); }
+    actions() { }
 
 }
 
-new App();
+new CM2Theme();

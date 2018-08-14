@@ -30,9 +30,7 @@ $container = get_theme_mod( 'cm2theme_container_type' );
 	<!-- ******************* The Navbar Area ******************* -->
 	<div class="wrapper-fluid wrapper-navbar" id="wrapper-navbar">
 
-		<a class="skip-link screen-reader-text sr-only" href="#content"><?php esc_html_e( 'Skip to content',
-		'cm2theme' ); ?></a>
-
+	
 		<nav class="navbar navbar-expand-md navbar-dark bg-dark">
 
 		<?php if ( 'container' == $container ) : ?>
@@ -69,8 +67,10 @@ $container = get_theme_mod( 'cm2theme_container_type' );
 						'container_id'    => 'navbarNavDropdown',
 						'menu_class'      => 'navbar-nav',
 						'fallback_cb'     => '',
+						'depth'			  => 2,
+						'fallback_cb'     => 'bs4navwalker::fallback',
 						'menu_id'         => 'main-menu',
-						'walker'          => new WP_Bootstrap_Navwalker(),
+						'walker'          => new bs4navwalker(),
 					)
 				); ?>
 			<?php if ( 'container' == $container ) : ?>

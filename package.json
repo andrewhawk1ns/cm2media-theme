@@ -4,33 +4,33 @@
   "description": "Bootstrap 4, Node.js and Wordpress in a blender.",
   "main": "index.js",
   "dependencies": {
-    "bootstrap": "^4.0.0-alpha.6",
+    "bootstrap": "^4.1.3",
     "font-awesome": "^4.7.0",
-    "jquery": "^3.2.1",
+    "jquery": "^3.3.1",
     "jquery-ui-dist": "^1.12.1",
-    "popper.js": "^1.12.6"
+    "popper.js": "^1.14.4"
   },
   "devDependencies": {
-    "babel-core": "^6.26.0",
+    "babel-core": "^6.26.3",
     "babel-preset-es2015": "^6.24.1",
-    "browser-sync": "^2.18.13",
-    "eslint": "^4.9.0",
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^4.0.0",
-    "gulp-babel": "^7.0.0",
-    "gulp-clean-css": "^3.9.0",
+    "babel-register": "^6.26.0",
+    "browser-sync": "^2.24.6",
+    "fancy-log": "^1.3.2",
+    "gulp": "3.9.0",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-babel": "^7.0.1",
+    "gulp-clean-css": "^3.10.0",
     "gulp-concat": "^2.6.1",
-    "gulp-imagemin": "^3.4.0",
+    "gulp-imagemin": "^4.1.0",
     "gulp-merge": "^0.1.1",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^3.1.0",
-    "gulp-sourcemaps": "^2.6.1",
-    "gulp-uglify": "^3.0.0",
-    "gulp-util": "^3.0.8",
-    "npm-run-all": "^4.1.1",
-    "require-dir": "^0.3.2",
-    "vinyl-ftp": "^0.6.0",
-    "yarn": "^1.2.1"
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.1",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.1",
+    "npm-run-all": "^4.1.3",
+    "require-dir": "^1.0.0",
+    "vinyl-ftp": "^0.6.1",
+    "yarn": "^1.9.4"
   },
   "config": {
     "assets": {
@@ -46,7 +46,9 @@
           ],
           "stylesMain": "./assets/frontend/styles/vendor.scss",
           "scripts": [
-            "node_modules/jquery/dist/jquery.min.js"
+            "node_modules/jquery/dist/jquery.js",
+            "node_modules/popper.js/dist/umd/popper.js",
+            "node_modules/bootstrap/dist/js/bootstrap.js"
           ]
         }
       },
@@ -60,13 +62,14 @@
           ],
           "stylesMain": "./assets/admin/styles/vendor.scss",
           "scripts": [
-            "node_modules/jquery-ui-dist/jquery-ui.min.js"
+            "node_modules/jquery/dist/jquery.js",
+            "node_modules/jquery-ui-dist/jquery-ui.js"
           ]
         }
       }
     },
     "browsersync": {
-      "projectURL": "localhost"
+      "projectURL": "http://localhost/theme-test"
     },
     "public": {
       "all": "./public/**/*",

@@ -5,6 +5,8 @@
  * @package cm2theme
  */
 
+
+ 
 if ( ! is_active_sidebar( 'left-sidebar' ) ) {
 	return;
 }

@@ -42,3 +42,8 @@ Run "yarn all"
 
 1. gulp prep:all
 2. gulp watch:all
+
+### Automatic FTP:
+
+1. gulp prep
+2. gulp watch:ftp

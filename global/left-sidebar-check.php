@@ -9,6 +9,7 @@
 
 <?php
 $sidebar_pos = get_theme_mod( 'cm2theme_sidebar_position' );
+
 ?>
 
 <?php if ( 'left' === $sidebar_pos || 'both' === $sidebar_pos ) : ?>

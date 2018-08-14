@@ -5,6 +5,10 @@
  * @package cm2theme
  */
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 require get_template_directory() . '/inc/theme-settings.php';
 
 // Set the content width based on the theme's design and stylesheet.
@@ -21,6 +25,8 @@ if ( ! function_exists( 'cm2theme_setup' ) ) :
 	 * as indicating support for post thumbnails.
 	 */
 	function cm2theme_setup() {
+
+		
 		/*
 		 * Make theme available for translation.
 		 * Translations can be filed in the /languages/ directory.
@@ -44,6 +50,7 @@ if ( ! function_exists( 'cm2theme_setup' ) ) :
 		register_nav_menus( array(
 			'primary' => __( 'Primary Menu', 'cm2theme' ),
 		) );
+		
 
 		/*
 		 * Switch default core markup for search form, comment form, and comments

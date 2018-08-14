@@ -17,13 +17,13 @@ $sidebar_pos = get_theme_mod( 'cm2theme_sidebar_position' );
 		<div class="row">
 
 			<!-- Do the left sidebar check -->
-			<?php get_template_part( 'global/left-sidebar-check', 'none' ); ?>
+			<?php get_template_part( 'global/left-sidebar-check' ); ?>
 
 			<main class="site-main" id="main">
 
 				<?php while ( have_posts() ) : the_post(); ?>
 
-					<?php get_template_part( 'loop-templates/content', 'single' ); ?>
+					<?php get_template_part( 'global/content', 'single' ); ?>
 
 						<?php cm2theme_post_nav(); ?>
 
@@ -41,7 +41,11 @@ $sidebar_pos = get_theme_mod( 'cm2theme_sidebar_position' );
 		</div><!-- #primary -->
 
 		<!-- Do the right sidebar check -->
-		<?php get_template_part( 'global/right-sidebar-check' ); ?>
+		<?php if ( 'right' === $sidebar_pos || 'both' === $sidebar_pos ) : ?>
+
+			<?php get_sidebar( 'right' ); ?>
+
+		<?php endif; ?>
 
 	</div><!-- .row -->
 
